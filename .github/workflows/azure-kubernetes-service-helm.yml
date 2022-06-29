@@ -8,8 +8,8 @@ on:
 
 env:
   RESOURCE_GROUP: "azurehelm"
-  CHART_PATH: "~/aks-helloworld/"
-  CHART_OVERRIDE_PATH: "~/aks-helloworld/"
+  CHART_PATH: "./aks-helloworld/"
+  CHART_OVERRIDE_PATH: "./aks-helloworld/values.yaml"
   CLUSTER_NAME: "kube1"
 
 jobs:
