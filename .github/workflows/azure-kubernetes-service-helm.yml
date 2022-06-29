@@ -53,8 +53,7 @@ jobs:
       uses: azure/aks-set-context@v2.0
       with:
         resource-group: ${{ env.RESOURCE_GROUP }}
-        cluster-name: ${{ env.CLUSTER_NAME }
-        
+        cluster-name: ${{ env.CLUSTER_NAME }}
    deploy:
     permissions:
       actions: read
