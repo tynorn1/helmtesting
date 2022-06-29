@@ -54,8 +54,8 @@ jobs:
       with:
         resource-group: ${{ env.RESOURCE_GROUP }}
         cluster-name: ${{ env.CLUSTER_NAME }
-
-  deploy:
+        
+   deploy:
     permissions:
       actions: read
       contents: read
