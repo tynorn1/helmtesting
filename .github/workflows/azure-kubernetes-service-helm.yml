@@ -50,14 +50,3 @@ jobs:
           replicas:2
         helm-version: 'latest' 
       id: bake
-
-    # Deploys application based on manifest files from previous step
-    - name: Deploy application
-      uses: Azure/k8s-deploy@v3.1
-      with:
-        action: deploy
-        manifests: ${{ steps.bake.outputs.manifestsBundle }}
-        images: |
-          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-        imagepullsecrets: |
-          ${{ env.IMAGE_PULL_SECRET_NAME }}
