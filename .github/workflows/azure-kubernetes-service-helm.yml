@@ -54,4 +54,5 @@ jobs:
     - name: Azure deploy  
       uses: Azure/k8s-deploy@v1
       with:
+        namespace: 'hellowworld'
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
