@@ -11,6 +11,7 @@ env:
   CHART_PATH: "./aks-helloworld/"
   CHART_OVERRIDE_PATH: "./aks-helloworld/values.yaml"
   CLUSTER_NAME: "kube1"
+  NAMESPACE: "helowworld"
 
 jobs:
   buildImage:
@@ -51,8 +52,10 @@ jobs:
           replicas:2
         helm-version: 'latest' 
       id: bake
+    - run: |
+        kubectl create namespace ${{ env.NAMESPACE }} --dry-run=client -o json | kubectl apply -f -  
     - name: Azure deploy  
       uses: Azure/k8s-deploy@v1
       with:
-        namespace: 'hellowworld'
+        namespace: ${{ env.NAMESPACE }}
         manifests: ${{ steps.bake.outputs.manifestsBundle }}
